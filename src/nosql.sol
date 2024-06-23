@@ -14,6 +14,8 @@ contract Nosql is INosql {
 
     mapping (string => CollectionItem[]) private Document;
 
+    // event DocumentAdded
+
     function compareString (string memory str1 , string memory str2 )internal pure returns (bool result){
         result = keccak256(abi.encodePacked(str1)) == keccak256(abi.encodePacked(str2)) ;
     }
