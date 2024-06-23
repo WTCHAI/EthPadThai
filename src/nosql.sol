@@ -25,7 +25,7 @@ contract Nosql is INosql {
         string memory value
     ) external {
         if (index == 0 ){
-            CollectionItem memory currentItem = CollectionItem(key,value) ;
+            CollectionItem memory currentItem = CollectionItem(targetKey,value) ;
             Document[collectionName].push(currentItem) ; 
         }
     }    
