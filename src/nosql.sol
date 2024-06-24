@@ -12,6 +12,7 @@ contract Nosql is INosql {
         string value ; 
     }
 
+    string[] private collectionList;
     mapping (string => CollectionItem[]) private Document;
 
     // event DocumentAdded
@@ -57,10 +58,14 @@ contract Nosql is INosql {
         }
     }
 
-    function logsAllDocument () external view {
-        CollectionItem[] storage Items = Document[""] ;
-        for (uint i = 0 ; i < Items.length ; i++){
-            console.log(Items[i].key,Items[i].value) ;
+    function logsAllDocument() external view {
+        for (uint i = 0; i < collectionList.length; i++) {
+            string memory collectionName = collectionList[i];
+            console.log("Collection:", collectionName);
+            CollectionItem[] storage items = Document[collectionName];
+            for (uint j = 0; j < items.length; j++) {
+                console.log("Key:", items[j].key, "Value:", items[j].value);
+            }
         }
     }
 }   
